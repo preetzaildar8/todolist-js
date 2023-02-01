@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todo App</title>
+        <link rel="stylesheet" href="style.css">
+        <script>
+            window.onload = function(){ 
+                document.querySelector('#push').onclick = function(){
+                if(document.querySelector('#newtask input').value.length == 0){
+                    alert("Kindly Enter Task Name!!!!")
+                }
+            
+                else{
+                    document.querySelector('#tasks').innerHTML += `
+                        <div class="task">
+                            <span id="taskname">
+                                ${document.querySelector('#newtask input').value}
+                            </span>
+                            <button class="delete">
+                                <img src="trash.svg">
+                            </button>
+                        </div>
+                    `;
+            
+                    var current_tasks = document.querySelectorAll(".delete");
+                    for(var i=0; i<current_tasks.length; i++){
+                        current_tasks[i].onclick = function(){
+                            this.parentNode.remove();
+                        }
+                    }
+                }
+            }
+            };
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>TODO App</h1>
+            <div id="newtask">
+                <input type="text" placeholder="Add Tasks">
+                <button id="push">Add</button>
+            </div>
+            <div id="tasks"></div>
+        </div>
+    </body>
+</html>
